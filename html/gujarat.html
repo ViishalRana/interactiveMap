@@ -82,28 +82,28 @@
             <div class="card-body text-center">
                 <img src="virus-infected.png" height="50">
                 <p class="card-text"></p>Confirmed</p>
-                <p class="card-text">49,400</p>
+                <p class="card-text" id = "confirmed">49,400</p>
             </div>
         </div>
         <div class="card bg-primary">
             <div class="card-body text-center">
                 <img src="virus-infected.png" height="50">
                 <p class="card-text">Active</p>
-                <p class="card-text">33,561</p>
+                <p class="card-text" id="active">33,561</p>
             </div>
         </div>
         <div class="card bg-success">
             <div class="card-body text-center">
                 <img src="virus-infected.png" height="50">
                 <p class="card-text">Recovered</p>
-                <p class="card-text">14,142</p>
+                <p class="card-text" id="recovered">14,142</p>
             </div>
         </div>
         <div class="card bg-danger">
             <div class="card-body text-center">
                 <img src="virus-infected.png" height="50">
                 <p class="card-text">Death</p>
-                <p class="card-text">1,693</p>
+                <p class="card-text" id = "death">1,693</p>
             </div>
         </div>  
     </div>
@@ -655,5 +655,38 @@ inkscape:version="0.92.4 (5da689c313, 2019-01-14)">
           <p></p>
         </div>
     </div>  
+
+
+    <script>
+        var request = new XMLHttpRequest()
+
+        request.open('GET', 'https://api.covid19india.org/data.json', true)
+
+request.onload = function() {
+    var data = JSON.parse(this.response)
+    let len = Object.keys( data.cases_time_series ).length
+    
+    console.log(data.cases_time_series[len-1]);
+
+    var confirm = data.cases_time_series[len-1].totalconfirmed;
+    var recovered = data.cases_time_series[len-1].totalrecovered;
+    var death = data.cases_time_series[len-1].totaldeceased;
+    var active = Number(confirm) - Number(recovered);
+
+    document.getElementById("confirmed").innerHTML = new Intl.NumberFormat('en-IN', { maximumSignificantDigits: 10 }).format(confirm);
+    document.getElementById("active").innerHTML = new Intl.NumberFormat('en-IN', { maximumSignificantDigits: 10 }).format(active);
+    document.getElementById("death").innerHTML = new Intl.NumberFormat('en-IN', { maximumSignificantDigits: 10 }).format(death);
+    document.getElementById("recovered").innerHTML = new Intl.NumberFormat('en-IN', { maximumSignificantDigits: 10 }).format(recovered);
+    
+
+    
+}
+
+request.send()
+    
+    
+    
+    </script>
+
 </body>
 </html>
