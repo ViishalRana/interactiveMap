@@ -11,11 +11,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
   <style>
-        *{
-            margin:0;
-            padding: 0;
-            box-sizing:border-box ;
-        }
         .style_count{
             margin: 0;
             padding: 5px;
@@ -630,13 +625,35 @@ inkscape:version="0.92.4 (5da689c313, 2019-01-14)">
             inkscape:connector-curvature="0" class="land" />
             </g>
     </g>
-</svg>
+        </svg>
     </div>
 
     <div class="row style_graph">
-        <div class="column" style="background-color:#aaa;">
-          <h2></h2>
-          <p></p>
+        <div class="column">
+            <div class="container my-5">
+                <div class="row text-center">
+                    <div class="col-3 text-warning">
+                        <h5>Confirmed</h5>
+                        <p id="confirmed"></p>
+                    </div>
+                    <div class="col-3 text-info">
+                        <h5>Active</h5>
+                        <p id="active"></p>
+                    </div>
+                    <div class="col-3 text-success">
+                        <h5>Recovered</h5>
+                        <p id="recovered"></p>
+                    </div>
+                    <div class="col-3 text-danger">
+                        <h5>Deceased</h5>
+                        <p id="deaths"></p>
+                    </div>
+                    <canvas id="myChart" >
+        
+                    </canvas>
+                    
+                </div>
+            </div>
         </div>
         <div class="column" style="background-color:#bbb;">
           <h2></h2>
@@ -652,14 +669,12 @@ inkscape:version="0.92.4 (5da689c313, 2019-01-14)">
 
 request.onload = function() {
     var data = JSON.parse(this.response)
-    let len = Object.keys( data.cases_time_series ).length
-    
-    console.log(data.cases_time_series[len-1]);
 
-    var confirm = data.cases_time_series[len-1].totalconfirmed;
-    var recovered = data.cases_time_series[len-1].totalrecovered;
-    var death = data.cases_time_series[len-1].totaldeceased;
-    var active = Number(confirm) - Number(recovered);
+    var confirm = data["statewise"][2]["confirmed"];
+    //console.log(confirm);
+    var recovered = data["statewise"][2]["recovered"];
+    var death = data["statewise"][2]["deaths"];
+    var active = data["statewise"][2]["active"];
 
     document.getElementById("confirmed").innerHTML = new Intl.NumberFormat('en-IN', { maximumSignificantDigits: 10 }).format(confirm);
     document.getElementById("active").innerHTML = new Intl.NumberFormat('en-IN', { maximumSignificantDigits: 10 }).format(active);
@@ -675,6 +690,10 @@ request.send()
     
     
     </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"> </script>
+    <script src="../js/script.js"></script>
+    
 
 </body>
 </html>
