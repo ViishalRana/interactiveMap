@@ -9,7 +9,6 @@ body{
     display: flex;
     flex-direction: column;
     margin: auto;
-    height: max-content;
     width: 100%;
 }
 .main-header{
