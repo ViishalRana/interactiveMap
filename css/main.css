@@ -53,8 +53,6 @@ body{
 }
 .body-mapdiv{
     display: flex;
-    flex-basis: 80%;
-
     margin: auto;
     justify-content: center;
     align-items: center;
