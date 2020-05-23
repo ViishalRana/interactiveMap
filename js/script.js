@@ -1,12 +1,12 @@
 $(document).ready(function () {
-    var url = "https://api.covid19india.org/state_district_wise.json"; 
+    var url = "https://api.covid19india.org/state_district_wise.json";
 
-    $.getJSON(url , function (data) {
+    $.getJSON(url, function (data) {
         var stateData = data['Gujarat']
         var districtData = stateData['districtData']
         var districtList = Object.keys(districtData);
         console.log(districtList);
-        
+
         var total_active = 0;
         var total_recovered = 0;
         var total_deaths = 0;
@@ -17,8 +17,8 @@ $(document).ready(function () {
         var recovered = [];
         var deaths = [];
         var active = [];
-        
-        districtList.forEach(function(district){
+
+        districtList.forEach(function (district) {
             districtwise.push(district);
             var activeCount = districtData[district]['active'];
             var recoveredCount = districtData[district]['recovered'];
@@ -40,7 +40,7 @@ $(document).ready(function () {
         confirmed.shift();
         recovered.shift();
         deaths.shift();
-        
+
         $("#active").append(total_active);
         $("#recovered").append(total_recovered);
         $("#deaths").append(total_deaths);
@@ -48,16 +48,16 @@ $(document).ready(function () {
 
         var ctx = document.getElementById("myChart").getContext('2d');
 
-        var myChart = new Chart(ctx,{
-            type:'line',
-            data:{
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
                 labels: districtwise,
-                datasets:[
+                datasets: [
                     {
-                         label:"Confirmed Cases",
-                         data :confirmed,
-                         backgroundColor:"#f1c40f",
-                         minBarLength:100
+                        label: "Confirmed Cases",
+                        data: confirmed,
+                        backgroundColor: "#f1c40f",
+                        minBarLength: 100
                     },
                     {
                         label: "Recovered Cases",
@@ -70,10 +70,10 @@ $(document).ready(function () {
                         data: deaths,
                         backgroundColor: "#e74c3c",
                         minBarLength: 100
-                    }  
+                    }
                 ]
             },
-            options:{}
+            options: {}
         });
 
     })
