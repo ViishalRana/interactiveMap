@@ -22,3 +22,31 @@ svg{
 .land:hover{
     fill: black;
 }
+*{
+    margin:0;
+    padding: 0;
+    box-sizing:border-box ;
+}
+.style_count{
+    margin: 0;
+    padding: 5px;
+    font-size:1.5em;
+}
+.style_map{
+    height: 500px;
+    border-bottom: black solid 2px;
+}
+.column {
+    float: left;
+    width: 50%;
+    padding: 10px;
+    height: 300px; 
+}
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+.style_graph{
+    margin: 0;
+}

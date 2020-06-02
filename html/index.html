@@ -4,43 +4,12 @@
   <title>Map View</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+  integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">  <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/main.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-  <style>
-        *{
-            margin:0;
-            padding: 0;
-            box-sizing:border-box ;
-        }
-        .style_count{
-            margin: 0;
-            padding: 5px;
-            font-size:1.5em;
-            border: black solid 2px;
-        }
-        .style_map{
-            height: 500px;
-            border-bottom: black solid 2px;
-        }
-        .column {
-            float: left;
-            width: 50%;
-            padding: 10px;
-            height: 300px; 
-        }
-        .row:after {
-            content: "";
-            display: table;
-            clear: both;
-        }
-        .style_graph{
-            margin: 0;
-        }
-  </style>
 </head>
 <body>
 
@@ -95,6 +64,21 @@
             </div>
         </div>  
     </div>
+    <div class="card-deck style_count">
+        <div class="card" style="background-color: white;" >
+            <canvas id="confirm"></canvas>
+        </div>
+        <div class="card" style="background-color:white;">
+            <canvas id="chart1"></canvas>
+        </div>
+        <div class="card" style="background-color:white;" >
+            <canvas id="chart2"></canvas>
+        </div>
+        <div class="card" style="background-color:white;" >
+            <canvas id="deaths"></canvas>
+        </div> 
+    </div>
+
     <div class="body-mapdiv">
         <svg xmlns="http://www.w3.org/2000/svg" xmlns:amcharts="http://amcharts.com/ammap" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1">
             <defs>
@@ -218,49 +202,39 @@
         </svg>
     </div>
 
-    <div class="row style_graph">
-        <div class="column" style="background-color:#aaa;">
-          <h2></h2>
-          <p></p>
-        </div>
-        <div class="column" style="background-color:#bbb;">
-          <h2></h2>
-          <p></p>
-        </div>
-    </div>  
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"> </script>
+    <script src="../js/script.js"></script>
+
     <script>
         var request = new XMLHttpRequest()
 
         request.open('GET', 'https://api.covid19india.org/data.json', true)
 
-request.onload = function() {
-    var data = JSON.parse(this.response)
-    let len = Object.keys( data.cases_time_series ).length
-    
-    console.log(data.cases_time_series[len-1]);
+        request.onload = function() {
+            var data = JSON.parse(this.response)
+            let len = Object.keys( data.cases_time_series ).length
+            
+            console.log(data.cases_time_series[len-1]);
 
-    var confirm = data.cases_time_series[len-1].totalconfirmed;
-    var recovered = data.cases_time_series[len-1].totalrecovered;
-    var death = data.cases_time_series[len-1].totaldeceased;
-    var active = Number(confirm) - Number(recovered);
+            var confirm = data.cases_time_series[len-1].totalconfirmed;
+            var recovered = data.cases_time_series[len-1].totalrecovered;
+            var death = data.cases_time_series[len-1].totaldeceased;
+            var active = Number(confirm) - Number(recovered);
 
-    document.getElementById("confirmed").innerHTML = new Intl.NumberFormat('en-IN', { maximumSignificantDigits: 10 }).format(confirm);
-    document.getElementById("active").innerHTML = new Intl.NumberFormat('en-IN', { maximumSignificantDigits: 10 }).format(active);
-    document.getElementById("death").innerHTML = new Intl.NumberFormat('en-IN', { maximumSignificantDigits: 10 }).format(death);
-    document.getElementById("recovered").innerHTML = new Intl.NumberFormat('en-IN', { maximumSignificantDigits: 10 }).format(recovered);
-    
+            document.getElementById("confirmed").innerHTML = new Intl.NumberFormat('en-IN', { maximumSignificantDigits: 10 }).format(confirm);
+            document.getElementById("active").innerHTML = new Intl.NumberFormat('en-IN', { maximumSignificantDigits: 10 }).format(active);
+            document.getElementById("death").innerHTML = new Intl.NumberFormat('en-IN', { maximumSignificantDigits: 10 }).format(death);
+            document.getElementById("recovered").innerHTML = new Intl.NumberFormat('en-IN', { maximumSignificantDigits: 10 }).format(recovered);
+            
 
-    
-}
+            
+        }
 
-request.send()
+        request.send()
     
     
     
     </script>
-=======
-    </div>
-    <script>
-    </script>  
 </body>
 </html>
