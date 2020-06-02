@@ -1,0 +1,1388 @@
+var data: {
+    confirmed: 0,
+
+    active: 0,
+
+    recovered: 0,
+
+    death: 0
+}
+
+
+var daySchema = new Schema({
+    confirmed: string,
+
+    active: string,
+
+    recovered: string,
+
+    death: string,
+
+    state: {
+        name: string,
+
+        confirmed: string,
+
+        active: string,
+
+        recovered: string,
+
+        death: string,
+
+        district: {
+
+            name: string,
+
+            confirmed: string,
+
+            active: string,
+
+            recovered: string,
+
+            death: string,
+        }
+    }
+
+
+});
+
+
+
+var states: {
+
+    {
+        name: "Sikkim"
+
+        data : data,
+        sikkim_d: {
+            East Sikkim: data,
+            North Sikkim: data,
+            South Sikkim: data,
+            West Sikkim: data
+        }
+    }
+
+    {
+        name: "Arunachal Pradesh "
+
+        data : data,
+
+        aruhachal_d: {
+            Lohit: data,
+            Anjaw: data,
+            Changlang: data,
+            East Kameng: data,
+            East Siang: data,
+            Kamle: data,
+            Kra Daadi: data,
+            Kurung Kumey: data,
+            Lepa Rada: data,
+            Longding: data,
+            Lower Dibang Valley: data,
+            Lower Siang: data,
+            Lower Subansiri: data,
+            Namsai: data,
+            Pakke Kessang: data,
+            Papum Pare: data,
+            Shi Yami: data,
+            Siang: data,
+            Tawang: data,
+            Tirap: data,
+            Upper Dibang Valley: data,
+            Upper Siang: data,
+            Upper Subansiri: data,
+            West Kameng: data,
+            West Siang: data
+        }
+
+    }
+    
+     {
+        name: "Nagaland "
+
+        data : data,
+
+        nagaland_d: {
+            Dimapur: data,
+            Kiphire: data,
+            Kohima: data,
+            Longleng: data,
+            Mokokchung: data,
+            Mon: data,
+            Peren: data,
+            Phek: data,
+            Tuensang: data,
+            Wokha: data,
+            Zunheboto: data,
+            Noklak: data
+        }
+
+
+
+    }
+
+
+
+    {
+        name: "Manipur"
+
+        confirmed: 0,
+
+        active: 0,
+
+        recovered: 0,
+
+        death: 0,
+
+        manipur_d: {
+            Bishnupur: data,
+            Chandel: data,
+            Churachandpur: data,
+            Imphal East: data,
+            Imphal West: data,
+            Jiribam: data,
+            Kakching: data,
+            Kamjong: data,
+            Kangpokpi: data,
+            Noney: data,
+            Pherzawl: data,
+            Senapati: data,
+            Tamenglong: data,
+            Tengnoupal: data,
+            Thoubal: data,
+            Ukhrul: data
+        }
+
+
+    }
+
+    {
+        name: "Mizoram"
+
+        confirmed: 0,
+
+        active: 0,
+
+        recovered: 0,
+
+        death: 0,
+        mizoram_d: {
+            Aizawl: data,
+            Champhai: data,
+            Hnahthial: data,
+            Khawzawl: data,
+            Kolasib: data,
+            Lawngtlai: data,
+            Lunglei: data,
+            Mamit: data,
+            Saiha: data,
+            Saitual: data,
+            Serchhip: data
+        }
+
+
+
+    } 
+
+    Tripura
+    {
+        name: "Tripura",
+
+        data : data,
+
+        tripura_d: {
+            Dhalai: data,
+            Gomati: data,
+            Khowai: data,
+            North Tripura: data,
+            Sipahijala: data,
+            South Tripura: data,
+            Unokoti: data,
+            West Tripura: data
+
+        }
+
+
+    } 
+    
+    {
+        name: "Meghalaya"
+
+        data : data,
+        meghalaya_d: {
+            East Garo Hills: data,
+            East Jaintia Hills: data,
+            East Khasi Hills: data,
+            North Garo Hills: data,
+            Ribhoi: data,
+            South Garo Hills: data,
+            South West Garo Hills: data,
+            South West Khasi Hills: data,
+            West Garo Hills: data,
+            West Jaintia Hills: data,
+            West Khasi Hills: data
+        }
+
+
+
+    }
+
+Jharkhand:
+    {
+        name: "Jharkhand"
+
+        data : data,
+        jharkhand_d: {
+            Ranchi: data,
+            Garhwa: data,
+            Hazaribagh: data,
+            Palamu: data,
+            Koderma: data,
+            Giridih: data,
+            East Singhbhum: data,
+            Bokaro: data,
+            Dhanbad: data,
+            Deoghar: data,
+            Latehar: data,
+            Gumla: data,
+            Ramgarh: data,
+            Simdega: data,
+            Dumka: data,
+            Jamtara: data,
+            Lohardaga: data,
+            Saraikela - Kharsawan: data,
+            Godda: data,
+            West Singhbhum: data,
+            Chatra: data,
+            Khunti: data,
+            Pakur: data,
+            Sahibganj: data
+        }
+
+
+
+    } 
+    
+    Odisha:{
+        name: "Odisha",
+
+        data : data,
+        odisha_d: {
+            Angul: data,
+            Balangir: data,
+            Balasore: data,
+            Bargarh: data,
+            Bhadrak: data,
+            Boudh: data,
+            Cuttack: data,
+            Deogarh: data,
+            Dhenkanal: data,
+            Gajapati: data,
+            Ganjam: data,
+            Jagatsinghpur: data,
+            Jajpur: data,
+            Jharsuguda: data,
+            Kalahandi: data,
+            Kandhamal: data,
+            Kendrapara: data,
+            Kendujhar: data,
+            Khordha: data,
+            Koraput: data,
+            Malkangiri: data,
+            Mayurbhanj: data,
+            Nabarangapur: data,
+            Nayagarh: data,
+            Nuapada: data,
+            Puri: data,
+            Rayagada: data,
+            Sambalpur: data,
+            Subarnapur: data,
+            Sundargarh: data
+        }
+
+
+
+
+    } 
+    
+    Bihar : {
+        name: "Bihar",
+
+        data : data,
+        bihar_d: {
+            Patna: data,
+            Munger: data,
+            Rohtas: data,
+            Begusarai: data,
+            Madhubani: data,
+            Nalanda: data,
+            Khagaria: data,
+            Buxar: data,
+            Gopalganj: data,
+            Bhagalpur: data,
+            Jehanabad: data,
+            Banka: data,
+            Siwan: data,
+            Kaimur: data,
+            Nawada: data,
+            Bhojpur: data,
+            Katihar: data,
+            Purnia: data,
+            Muzaffarpur: data,
+            Supaul: data,
+            Aurangabad: data,
+            West Champaran: data,
+            Sheikhpura: data,
+            Darbhanga: data,
+            Saharsa: data,
+            Madhepura: data,
+            East Champaran: data,
+            Arwal: data,
+            Samastipur: data,
+            Jamui: data,
+            Vaishali: data,
+            Kishanganj: data,
+            Lakhisarai: data,
+            Saran: data,
+            Gaya: data,
+            Sitamarhi: data,
+            Sheohar: data,
+            Araria: data
+        }
+
+
+    } 
+    
+    Assam:
+    {
+        name: "Assam",
+
+        data : data,
+        assaam_d: {
+            Kamrup Metropolitan: data,
+            Golaghat: data,
+            Cachar: data,
+            Kamrup: data,
+            Jorhat: data,
+            Goalpara: data,
+            Morigaon: data,
+            Nalbari: data,
+            Bongaigaon: data,
+            Dhubri: data,
+            Karimganj: data,
+            Nagaon: data,
+            Biswanath: data,
+            Hojai: data,
+            Kokrajhar: data,
+            Hailakandi: data,
+            Lakhimpur: data,
+            Sivasagar: data,
+            Sonitpur: data,
+            South Salmara Mankachar: data,
+            Baksa: data,
+            Barpeta: data,
+            Charaideo: data,
+            Chirang: data,
+            Darrang: data,
+            Dhemaji: data,
+            Dibrugarh: data,
+            Dima Hasao: data,
+            Karbi Anglong: data,
+            Majuli: data,
+            Tinsukia: data,
+            Udalguri: data,
+            West Karbi Anglong: data
+        }
+
+
+    }
+
+    WestBengal
+    {
+        name: "West Bengal",
+
+        data : data,
+        westbengal_d: {
+            Alipurduar: data,
+            Bankura: data,
+            Birbhum: data,
+            Cooch Behar: data,
+            Dakshin Dinajpur: data,
+            Darjeeling: data,
+            Hooghly: data,
+            Howrah: data,
+            Jalpaiguri: data,
+            Jhargram: data,
+            Kalimpong: data,
+            Kolkata: data,
+            Malda: data,
+            Murshidabad: data,
+            Nadia: data,
+            North 24 Parganas: data,
+            Paschim Bardhaman: data,
+            Paschim Medinipur: data,
+            Purba Bardhaman: data,
+            Purba Medinipur: data,
+            Purulia: data,
+            South 24 Parganas: data,
+            Uttar Dinajpur: data
+        }
+
+
+
+
+    }
+
+J&K:
+    {
+        name: "J & K"
+
+        data : data,4
+
+        jammukashmir_d: {
+            Anantnag: data,
+            Kulgam: data,
+            Srinagar: data,
+            Bandipora: data,
+            Baramulla: data,
+            Kupwara: data,
+            Shopiyan: data,
+            Jammu: data,
+            Budgam: data,
+            Kathua: data,
+            Udhampur: data,
+            Ramban: data,
+            Ganderbal: data,
+            Pulwama: data,
+            Samba: data,
+            Rajouri: data,
+            Kishtwar: data,
+            Punch: data,
+            Reasi: data,
+            Doda: data,
+            Mirpur: data,
+            Muzaffarabad: data
+        }
+
+
+
+    }
+
+    HimachalPradesh:
+    {
+        name: "Himachal Pradesh"
+
+        data : data,
+
+        himachalpradesh_d: {
+            Kangra: data,
+            Una: data,
+            Hamirpur: data,
+            Chamba: data,
+            Solan: data,
+            Bilaspur: data,
+            Sirmaur: data,
+            Mandi: data,
+            Kullu: data,
+            Shimla: data,
+            Kinnaur: data,
+            Lahaul and Spiti: data
+
+        }
+
+    }
+
+
+Rajasthan:
+    {
+        name: "Rajasthan"
+
+        data : data,
+
+        rajasthan_d: {
+            Ajmer: data,
+            Alwar: data,
+            Banswara: data,
+            Baran: data,
+            Barmer: data,
+            Bharatpur: data,
+            Bhilwara: data,
+            Bikaner: data,
+            BSF Camp: data,
+            Bundi: data,
+            Chittorgarh: data,
+            Churu: data,
+            Dausa: data,
+            Dholpur: data,
+            Dungarpur: data,
+            Evacuees: data,
+            Ganganagar: data,
+            Hanumangarh: data,
+            Italians: data,
+            Jaipur: data,
+            Jaisalmer: data,
+            Jalore: data,
+            Jhalawar: data,
+            Jhunjhunu: data,
+            Jodhpur: data,
+            Karauli: data,
+            Kota: data,
+            Nagaur: data,
+            Pali: data,
+            Pratapgarh: data,
+            Rajsamand: data,
+            Sawai Madhopur: data,
+            Sikar: data,
+            Sirohi: data,
+            Tonk: data,
+            Udaipur: data
+        }
+
+
+    }
+
+
+    UttarPradesh
+    {
+        name: "Uttar Pradesh",
+
+        data : data,
+
+        uttarpradesh_d: {
+            Agra: data,
+            Aligarh: data,
+            Ambedkar Nagar: data,
+            Amethi: data,
+            Amroha: data,
+            Auraiya: data,
+            Ayodhya: data,
+            Azamgarh: data,
+            Baghpat: data,
+            Bahraich: data,
+            Ballia: data,
+            Balrampur: data,
+            Banda: data,
+            Barabanki: data,
+            Bareilly: data,
+            Basti: data,
+            Bhadohi: data,
+            Bijnor: data,
+            Budaun: data,
+            Bulandshahr: data,
+            Chandauli: data,
+            Chitrakoot: data,
+            Deoria: data,
+            Etah: data,
+            Etawah: data,
+            Farrukhabad: data,
+            Fatehpur: data,
+            Firozabad: data,
+            Gautam Buddha Nagar: data,
+            Ghaziabad: data,
+            Ghazipur: data,
+            Gonda: data,
+            Gorakhpur: data,
+            Hamirpur: data,
+            Hapur: data,
+            Hardoi: data,
+            Hathras: data,
+            Jalaun: data,
+            Jaunpur: data,
+            Jhansi: data,
+            Kannauj: data,
+            Kanpur Dehat: data,
+            Kanpur Nagar: data,
+            Kasganj: data,
+            Kaushambi: data,
+            Kushinagar: data,
+            Lakhimpur Kheri: data,
+            Lalitpur: data,
+            Lucknow: data,
+            Maharajganj: data,
+            Mahoba: data,
+            Mainpuri: data,
+            Mathura: data,
+            Mau: data,
+            Meerut: data,
+            Mirzapur: data,
+            Moradabad: data,
+            Muzaffarnagar: data,
+            Pilibhit: data,
+            Pratapgarh: data,
+            Prayagraj: data,
+            Rae Bareli: data,
+            Rampur: data,
+            Saharanpur: data,
+            Sambhal: data,
+            Sant Kabir Nagar: data,
+            Shahjahanpur: data,
+            Shamli: data,
+            Shrawasti: data,
+            Siddharthnagar: data,
+            Sitapur: data,
+            Sonbhadra: data,
+            Sultanpur: data,
+            Unnao: data,
+            Varanasi: data
+        }
+
+    }
+
+Punjab:
+    {
+        name: "Punjab",
+
+        data : data,
+
+        punjab_d: {
+            Amritsar: data,
+            Barnala: data,
+            Bathinda: data,
+            Faridkot: data,
+            Fatehgarh Sahib: data,
+            Fazilka: data,
+            Ferozepur: data,
+            Gurdaspur: data,
+            Hoshiarpur: data,
+            Jalandhar: data,
+            Kapurthala: data,
+            Ludhiana: data,
+            Mansa: data,
+            Moga: data,
+            Pathankot: data,
+            Patiala: data,
+            Rupnagar: data,
+            S.A.S.Nagar: data,
+            Sangrur: data,
+            Shahid Bhagat Singh Nagar: data,
+            Sri Muktsar Sahib: data,
+            Tarn Taran: data
+        }
+
+
+
+    }
+
+
+Uttarakand:
+    {
+        name: "Uttarakand",
+
+        data : data,
+
+
+        uttarakand_d: {
+            Almora: data,
+            Bageshwar: data,
+            Chamoli: data,
+            Champawat: data,
+            Dehradun: data,
+            Haridwar: data,
+            Nainital: data,
+            Pauri Garhwal: data,
+            Pithoragarh: data,
+            Rudraprayag: data,
+            Tehri Garhwal: data,
+            Udham Singh Nagar: data,
+            Uttarkashi: data
+        }
+
+
+    }
+
+
+Haryana : 
+    {
+        name: "Haryana",
+        data : data,
+        haryana_d: {
+            Gurugram: data,
+            Faridabad: data,
+            Sonipat: data,
+            Jhajjar: data,
+            Nuh: data,
+            Ambala: data,
+            Palwal: data,
+            Panipat: data,
+            Panchkula: data,
+            Jind: data,
+            Karnal: data,
+            Rohtak: data,
+            Mahendragarh: data,
+            Hisar: data,
+            Rewari: data,
+            Fatehabad: data,
+            Sirsa: data,
+            Yamunanagar: data,
+            Bhiwani: data,
+            Charkhi Dadri: data,
+            Kaithal: data,
+            Kurukshetra: data,
+        }
+
+
+
+    }
+
+Delhi:
+    {
+        name: "Delhi"
+
+        data : data,
+        delhi_d: {
+            Cental Delhi: data,
+            South East Delhi: data,
+            West Delhi: data,
+            South Delhi: data,
+            North Delhi: data,
+            Shahdara: data,
+            South West Delhi: data,
+            East Delhi: data,
+            New Delhi: data,
+            North West Delhi: data,
+
+        }
+
+
+
+
+    }
+
+
+Kerala:
+    {
+        name: "Kerala",
+
+        data : data,
+        kerala_d: {
+            Kasaragod: data,
+            Kannur: data,
+            Malappuram: data,
+            Kozhikode: data,
+            Palakkad: data,
+            Ernakulam: data,
+            Kollam: data,
+            Thrissur: data,
+            Kottayam: data,
+            Idukki: data,
+            Pathanamthitta: data,
+            Thiruvananthapuram: data,
+            Wayanad: data,
+            Alappuzha: data
+
+        }
+
+
+    }
+
+TamilNadu : 
+    {
+        name: "Tamil Nadu",
+
+        data : data,
+        tamilnadu_d: {
+            Ariyalur: data,
+            Chengalpattu: data,
+            Chennai: data,
+            Coimbatore: data,
+            Cuddalore: data,
+            Dharmapuri: data,
+            Dindigul: data,
+            Erode: data,
+            Kallakurichi: data,
+            Kancheepuram: data,
+            Kanyakumari: data,
+            Karur: data,
+            Krishnagiri: data,
+            Madurai: data,
+            Nagapattinam: data,
+            Namakkal: data,
+            Nilgiris: data,
+            Perambalur: data,
+            Pudukkottai: data,
+            Railway Quarantine: data,
+            Ramanathapuram: data,
+            Ranipet: data,
+            Salem: data,
+            Sivaganga: data,
+            Tenkasi: data,
+            Thanjavur: data,
+            Theni: data,
+            Thiruvallur: data,
+            Thiruvarur: data,
+            Thoothukkudi: data,
+            Tiruchirappalli: data,
+            Tirunelveli: data,
+            Tirupathur: data,
+            Tiruppur: data,
+            Tiruvannamalai: data,
+            Vellore: data,
+            Viluppuram: data,
+            Virudhunagar: data
+        }
+
+
+    }
+
+
+Telangana:
+    {
+        name: "Telangana",
+
+        data : data,
+        telangana_d: {
+            Adilabad: data,
+            Bhadradri Kothagudem: data,
+            Hyderabad: data,
+            Jagtial: data,
+            Jangaon: data,
+            Jayashankar Bhupalapally: data,
+            Jogulamba Gadwal: data,
+            Kamareddy: data,
+            Karimnagar: data,
+            Khammam: data,
+            Komaram Bheem: data,
+            Mahabubabad: data,
+            Mahabubnagar: data,
+            Mancherial: data,
+            Medak: data,
+            Medchal Malkajgiri: data,
+            Mulugu: data,
+            Nagarkurnool: data,
+            Nalgonda: data,
+            Narayanpet: data,
+            Nirmal: data,
+            Nizamabad: data,
+            Peddapalli: data,
+            Rajanna Sircilla: data,
+            Ranga Reddy: data,
+            Sangareddy: data,
+            Siddipet: data,
+            Suryapet: data,
+            Vikarabad: data,
+            Wanaparthy: data,
+            Warangal Rural: data,
+            Warangal Urban: data,
+            Yadadri Bhuvanagiri: data
+        }
+
+    } 
+    
+    AndhraPradesh:
+    {
+        name: "Andhra Pradesh"
+
+        data : data,
+        andhrapradesh_d: {
+            Anantapur: data,
+            Chittoor district: data,
+            Y.S.R.Kadapa: data,
+            East Godavari: data,
+            Guntur: data,
+            Krishna: data,
+            Kurnool: data,
+            S.P.S.Nellore: data,
+            Prakasam: data,
+            Srikakulam: data,
+            Visakhapatnam: data,
+            Vizianagaram: data,
+            West Godavari: data
+        }
+
+    } 
+    
+    Lakshadweep:{
+        name: "Lakshadweep",
+
+        data : data,
+        lakshadweep_d: {
+            Lakshadweep: data
+        }
+    } 
+    
+    Puducherry:
+    {
+        name: "Puducherry"
+
+        data : data,
+        puducherry_d: {
+            Karaikal: data,
+            Mahe: data,
+            Puducherry: data,
+            Yanam: data
+        }
+
+    } 
+
+    Chhattisgarh:
+    {
+        name: "Chhattisgarh",
+
+        data : data,
+
+        chhattisgarh_d: {
+            Korba: data,
+            Balod: data,
+            Janjgir Champa: data,
+            Durg: data,
+            Kabeerdham: data,
+            Raipur: data,
+            Surajpur: data,
+            Baloda Bazar: data,
+            Rajnandgaon: data,
+            Raigarh: data,
+            Bilaspur: data,
+            Gariaband: data,
+            Koriya: data,
+            Surguja: data,
+            Balrampur: data,
+            Bametara: data,
+            Bastar: data,
+            Bijapur: data,
+            Dakshin Bastar Dantewada: data,
+            Dhamtari: data,
+            Jashpur: data,
+            Kondagaon: data,
+            Mahasamund: data,
+            Mungeli: data,
+            Narayanpur: data,
+            Sukma: data,
+            Uttar Bastar Kanker: data
+
+        }
+
+
+    } 
+    
+    MadhyaPradesh:
+    {
+        name: "Madhya Pradesh"
+
+        data : data,
+        madhyapradesh_d: {
+            Agar Malwa: data,
+            Alirajpur: data,
+            Anuppur: data,
+            Ashoknagar: data,
+            Balaghat: data,
+            Barwani: data,
+            Betul: data,
+            Bhind: data,
+            Bhopal: data,
+            Burhanpur: data,
+            Chhatarpur: data,
+            Chhindwara: data,
+            Damoh: data,
+            Datia: data,
+            Dewas: data,
+            Dhar: data,
+            Dindori: data,
+            Guna: data,
+            Gwalior: data,
+            Harda: data,
+            Hoshangabad: data,
+            Indore: data,
+            Jabalpur: data,
+            Jhabua: data,
+            Katni: data,
+            Khandwa: data,
+            Khargone: data,
+            Mandla: data,
+            Mandsaur: data,
+            Morena: data,
+            Narsinghpur: data,
+            Neemuch: data,
+            Niwari: data,
+            Panna: data,
+            Raisen: data,
+            Rajgarh: data,
+            Ratlam: data,
+            Rewa: data,
+            Sagar: data,
+            Satna: data,
+            Sehore: data,
+            Seoni: data,
+            Shahdol: data,
+            Shajapur: data,
+            Sheopur: data,
+            Shivpuri: data,
+            Sidhi: data,
+            Singrauli: data,
+            Tikamgarh: data,
+            Ujjain: data,
+            Umaria: data,
+            Vidisha: data
+        }
+
+    } 
+    
+    Gujarat:
+    {
+        name: "Gujarat"
+
+        data : data,
+        gujarat_d: {
+            Ahmedabad: data,
+            Surat: data,
+            Vadodara: data,
+            Gandhinagar: data,
+            Bhavnagar: data,
+            Banaskantha: data,
+            Anand: data,
+            Aravalli: data,
+            Rajkot: data,
+            Mehsana: data,
+            Panchmahal: data,
+            Botad: data,
+            Mahisagar: data,
+            Patan: data,
+            Kutch: data,
+            Kheda: data,
+            Sabarkantha: data,
+            Jamnagar: data,
+            Bharuch: data,
+            Dahod: data,
+            Gir Somnath: data,
+            Chhota Udaipur: data,
+            Valsad: data,
+            Narmada: data,
+            Devbhumi Dwarka: data,
+            Junagadh: data,
+            Surendranagar: data,
+            Navsari: data,
+            Porbandar: data,
+            Tapi: data,
+            Amreli: data,
+            Dang: data,
+            Morbi: data
+        }
+
+    }
+
+DadraNagarHaveli:
+    {
+        name: "Dadra & Nagar Haveli"
+
+        data : data,
+        dadra_d: {
+            Dadra and Nagar Haveli: data
+        }
+
+    } 
+    
+    
+    Maharashtra:
+    {
+        name: "Maharashtra",
+
+        data : data,
+
+        maharashtra_d: {
+            Mumbai: data,
+            Thane: data,
+            Pune: data,
+            Aurangabad: data,
+            Nashik: data,
+            Raigad: data,
+            Solapur: data,
+            Palghar: data,
+            Nagpur: data,
+            Akola: data,
+            Jalgaon: data,
+            Satara: data,
+            Kolhapur: data,
+            Amravati: data,
+            Ratnagiri: data,
+            Hingoli: data,
+            Yavatmal: data,
+            Dhule: data,
+            Nanded: data,
+            Ahmednagar: data,
+            Sangli: data,
+            Latur: data,
+            Jalna: data,
+            Buldhana: data,
+            Nandurbar: data,
+            Osmanabad: data,
+            Sindhudurg: data,
+            Parbhani: data,
+            Washim: data,
+            Bhandara: data,
+            Gadchiroli: data,
+            Beed: data,
+            Chandrapur: data,
+            Gondia: data,
+            Wardha: data,
+            Mumbai Suburban: data
+        }
+
+
+    } 
+
+    Goa:
+    {
+        name: "Goa",
+
+        data : data,
+
+        goa_d: {
+            South Goa: data,
+            North Goa: data
+        }
+
+    } 
+    
+    DamanDiu:
+    {
+        name: "Daman and Diu"
+
+        data : data,
+        daman_d: {
+            Daman: data,
+            Diu: data
+
+        }
+
+    }
+}
+
+
+
+districts: {
+
+
+
+    andaman_d: {
+        South Andaman: data,
+
+        North and Moddile Andaman: data,
+
+        Nicobars: data,
+    }
+
+
+
+
+
+    aasam_d: {
+        Kamrup Metropolitan: data,
+        Golaghat: data,
+        Cachar: data,
+        Kamrup: data,
+        Jorhat: data,
+        Goalpara: data,
+        Morigaon: data,
+        Nalbari: data,
+        Bongaigaon: data,
+        Dhubri: data,
+        Karimganj: data,
+        Nagaon: data,
+        Biswanath: data,
+        Hojai: data,
+        Kokrajhar: data,
+        Hailakandi: data,
+        Lakhimpur: data,
+        Sivasagar: data,
+        Sonitpur: data,
+        South Salmara Mankachar: data,
+        Baksa: data,
+        Barpeta: data,
+        Charaideo: data,
+        Chirang: data,
+        Darrang: data,
+        Dhemaji: data,
+        Dibrugarh: data,
+        Dima Hasao: data,
+        Karbi Anglong: data,
+        Majuli: data,
+        Tinsukia: data,
+        Udalguri: data,
+        West Karbi Anglong: data
+
+    }
+
+
+
+    chandigarh: {
+        Chandigarh: data
+    }
+
+
+
+
+
+
+
+
+    uttarakand_d: {
+        Almora: data,
+        Bageshwar: data,
+        Chamoli: data,
+        Champawat: data,
+        Dehradun: data,
+        Haridwar: data,
+        Nainital: data,
+        Pauri Garhwal: data,
+        Pithoragarh: data,
+        Rudraprayag: data,
+        Tehri Garhwal: data,
+        Udham Singh Nagar: data,
+        Uttarkashi: data
+    }
+
+
+
+
+    jammukashmir_d: {
+        Anantnag: data,
+        Kulgam: data,
+        Srinagar: data,
+        Bandipora: data,
+        Baramulla: data,
+        Kupwara: data,
+        Shopiyan: data,
+        Jammu: data,
+        Budgam: data,
+        Kathua: data,
+        Udhampur: data,
+        Ramban: data,
+        Ganderbal: data,
+        Pulwama: data,
+        Samba: data,
+        Rajouri: data,
+        Kishtwar: data,
+        Punch: data,
+        Reasi: data,
+        Doda: data,
+        Mirpur: data,
+        Muzaffarabad: data
+    }
+
+
+    karnataka: {
+        Bengaluru Urban: data,
+        Mandya: data,
+        Kalaburagi: data,
+        Belagavi: data,
+        Davanagere: data,
+        Mysuru: data,
+        Bagalkote: data,
+        Bidar: data,
+        Vijayapura: data,
+        Uttara Kannada: data,
+        Hassan: data,
+        Dakshina Kannada: data,
+        Dharwad: data,
+        Shivamogga: data,
+        Chikkaballapura: data,
+        Udupi: data,
+        Ballari: data,
+        Gadag: data,
+        Tumakuru: data,
+        Yadgir: data,
+        Raichur: data,
+        Chitradurga: data,
+        Kolar: data,
+        Bengaluru Rural: data,
+        Chikkamagaluru: data,
+        Haveri: data,
+        Koppal: data,
+        Kodagu: data,
+        Chamarajanagara: data,
+        Ramanagara: data
+
+    }
+
+
+
+
+    Manipur: {
+        Bishnupur: data,
+        Chandel: data,
+        Churachandpur: data,
+        Imphal East: data,
+        Imphal West: data,
+        Jiribam: data,
+        Kakching: data,
+        Kamjong: data,
+        Kangpokpi: data,
+        Noney: data,
+        Pherzawl: data,
+        Senapati: data,
+        Tamenglong: data,
+        Tengnoupal: data,
+        Thoubal: data,
+        Ukhrul: data
+    }
+
+
+
+
+
+
+    punjab_d: {
+        Amritsar: data,
+        Barnala: data,
+        Bathinda: data,
+        Faridkot: data,
+        Fatehgarh Sahib: data,
+        Fazilka: data,
+        Ferozepur: data,
+        Gurdaspur: data,
+        Hoshiarpur: data,
+        Jalandhar: data,
+        Kapurthala: data,
+        Ludhiana: data,
+        Mansa: data,
+        Moga: data,
+        Pathankot: data,
+        Patiala: data,
+        Rupnagar: data,
+        S.A.S.Nagar: data,
+        Sangrur: data,
+        Shahid Bhagat Singh Nagar: data,
+        Sri Muktsar Sahib: data,
+        Tarn Taran: data
+    }
+
+
+    rajasthan_d: {
+        Ajmer: data,
+        Alwar: data,
+        Banswara: data,
+        Baran: data,
+        Barmer: data,
+        Bharatpur: data,
+        Bhilwara: data,
+        Bikaner: data,
+        BSF Camp: data,
+        Bundi: data,
+        Chittorgarh: data,
+        Churu: data,
+        Dausa: data,
+        Dholpur: data,
+        Dungarpur: data,
+        Evacuees: data,
+        Ganganagar: data,
+        Hanumangarh: data,
+        Italians: data,
+        Jaipur: data,
+        Jaisalmer: data,
+        Jalore: data,
+        Jhalawar: data,
+        Jhunjhunu: data,
+        Jodhpur: data,
+        Karauli: data,
+        Kota: data,
+        Nagaur: data,
+        Pali: data,
+        Pratapgarh: data,
+        Rajsamand: data,
+        Sawai Madhopur: data,
+        Sikar: data,
+        Sirohi: data,
+        Tonk: data,
+        Udaipur: data
+    }
+
+}
