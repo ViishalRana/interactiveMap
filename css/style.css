@@ -38,7 +38,8 @@
         transition: width 0.3s;
     }
     .land:hover{
-        fill: black;
+        fill:lightsalmon;
+        stroke-width: 5;
     }
     *{
         margin:0;
